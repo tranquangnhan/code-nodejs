@@ -1,8 +1,11 @@
 {
   "user": [
     {
-      "name": "nhan",
-      "id": "5mnhktXdK"
+      "name": "nhân",
+      "id": "5mnhktXdK",
+      "phone": "123123",
+      "email": "tranquangnhan1606@gmail.com",
+      "password": "123456"
     },
     {
       "name": "hoang",
