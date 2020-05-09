@@ -5,6 +5,9 @@ var bodyParser = require('body-parser'); //require thu vien body-parser http://e
 var userRoute = require('./routers/user.route');
 var authRoute = require('./routers/auth.route')
     //khai báo sử dụng router, import vào
+
+var authMiddleware = require('./middlewares/auth.middleware');
+//require middleware
 var app = express();
 //set pug  
 app.set('view engine', 'pug') //http://expressjs.com/en/guide/using-template-engines.html
@@ -27,9 +30,10 @@ app.get('/', function(req, res) {
         name: 'Tran Van Hoang'
     });
 });
-app.use('/user', userRoute);
+
 app.use('/auth', authRoute)
-    // sử dụng router
+app.use('/user', authMiddleware.middleware, userRoute);
+// sử dụng router
 app.listen(8000, function() {
     console.log('sever is running in 8000');
 });

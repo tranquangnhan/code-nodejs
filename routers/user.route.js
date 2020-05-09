@@ -7,26 +7,20 @@ var validate = require('../validate/user.validate');
 var controller = require('../controllers/user.controller');
 //require controller
 
-// router.get('/search', function(req, res) {
-//     res.render('user/index');
-// });
+var authMiddleware = require('../middlewares/auth.middleware');
+//require middleware
 
 //render ra khung tìm kiếm
-router.get("/search", controller.search);
+router.get("/search", authMiddleware.middleware, controller.search);
 //render search
-router.get('/', controller.index);
+router.get('/', authMiddleware.middleware, controller.index);
 //render tran van hoang
-router.get('/cookie', function(req, res, next) {
-    res.cookie('user-id', 1234);
-    res.send('hello');
-});
-//test cookie
-router.get('/post', controller.post);
+router.get('/post', authMiddleware.middleware, controller.post);
 //render user/post
-router.post('/post', validate.createPost, controller.createPost);
+router.post('/post', authMiddleware.middleware, validate.createPost, controller.createPost);
 //render user/post
 //ứng dụng view
-router.get("/:id", controller.get);
+router.get("/:id", authMiddleware.middleware, controller.get);
 //get dữ liệu show viewer
 
 
