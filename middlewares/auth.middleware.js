@@ -9,5 +9,6 @@ module.exports.middleware = function(req, res, next) {
         res.redirect('/auth/login'); //nếu k có chuyển trang
         return;
     }
+    res.locals.user = user;
     next(); //nếu có thực hiện tiếp các câu lệnh khác
 }

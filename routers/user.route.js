@@ -7,20 +7,17 @@ var validate = require('../validate/user.validate');
 var controller = require('../controllers/user.controller');
 //require controller
 
-var authMiddleware = require('../middlewares/auth.middleware');
-//require middleware
-
 //render ra khung tìm kiếm
-router.get("/search", authMiddleware.middleware, controller.search);
+router.get("/search", controller.search);
 //render search
-router.get('/', authMiddleware.middleware, controller.index);
+router.get('/', controller.index);
 //render tran van hoang
-router.get('/post', authMiddleware.middleware, controller.post);
+router.get('/post', controller.post);
 //render user/post
-router.post('/post', authMiddleware.middleware, validate.createPost, controller.createPost);
+router.post('/post', validate.createPost, controller.createPost);
 //render user/post
 //ứng dụng view
-router.get("/:id", authMiddleware.middleware, controller.get);
+router.get("/:id", controller.get);
 //get dữ liệu show viewer
 
 

@@ -1,3 +1,4 @@
+var md5 = require('md5');
 var db = require('../db');
 //require database lowdb
 module.exports.login = function(req, res) {
@@ -13,7 +14,8 @@ module.exports.postLogin = function(req, res) {
             values: req.body //giữ lại giá trị nhập vào
         })
     }
-    if (password !== user.password) { //so sánh password nếu k bằng thì loại 
+    var hashpassword = md5(password);
+    if (hashpassword !== user.password) { //so sánh password nếu k bằng thì loại 
         res.render('auth/login', {
             errors: ['wrong password!'], //kiểm tra nếu không có thì trả về lỗi 
             values: req.body //giữ lại giá trị nhập vào
