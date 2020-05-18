@@ -10,12 +10,15 @@ block content
             input(type="text" name='q')
             button.btn.btn-primary.ml-2 Search
     table.table
-        tr
+        tr  
+            th Avatar
             th Name
             th Phone
             th Actions
         each us in user    
-            tr
+            tr  
+                td
+                    img(src= us.avatar,width="64")
                 td= us.name
                 td= us.phone
                 td

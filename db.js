@@ -8,7 +8,7 @@ var db = low(adapter);
 var shortid = require('shortid');
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ user: [] })
+db.defaults({ user: [], session: [] })
     .write();
 //get data base
 

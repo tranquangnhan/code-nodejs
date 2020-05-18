@@ -25,6 +25,7 @@ module.exports.post = function(req, res) {
     //controller post
 module.exports.createPost = function(req, res) {
         req.body.id = shortid.generate();
+        req.body.avatar = "uploads/" + req.file.filename;
         db.get('user').push(req.body).write();
         res.redirect('/user');
     }

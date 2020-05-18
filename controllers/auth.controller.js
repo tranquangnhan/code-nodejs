@@ -21,6 +21,8 @@ module.exports.postLogin = function(req, res) {
             values: req.body //giữ lại giá trị nhập vào
         })
     }
-    res.cookie('userid', user.id); //gán cookie nếu nhập đúng email, mk
+    res.cookie('userid', user.id, {
+        signed: true
+    }); //gán cookie nếu nhập đúng email, mk
     res.redirect('/user'); //nếu đúng hết thì chuyển vào user
 }

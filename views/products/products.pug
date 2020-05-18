@@ -1,0 +1,39 @@
+extends ../layouts/common
+block content
+    .container
+        .row
+            .col-lg-9
+                h3 Sản Phẩm
+            .col-lg-3 
+                form(action="/products", method="GET")
+                    div.from-group.d-flex.flex-row
+                        input(type="text",name="sanpham",placeholder="Tìm sản phẩm").form-control.mr-2
+                        button(type="submit").btn.btn-primary search
+    .container.mt-5
+        .row
+            each pro in products
+                .col-lg-3.mb-3
+                    div(style="width: 16.5rem;height: 500px;").card
+                        img(src=""+pro.images+"").img-card-top
+                        div.card-body
+                            h5.card-title= pro.name
+                            p.card-text= pro.description
+                            a.btn.btn-primary Chọn
+        .row
+            .col-lg-9 Chuyển Trang
+            .col-lg-3 
+                nav(aria-label='...')
+                    ul.pagination
+                        li.page-item.disabled
+                        a.page-link(href='', tabindex='-1', aria-disabled='true') Previous
+                        li.page-item
+                        a.page-link(href='/products?page=1') 1
+                        li.page-item.active(aria-current='page')
+                        a.page-link(href='/products?page=2')
+                            | 2 
+                            span.sr-only (current)
+                        li.page-item
+                        a.page-link(href='/products?page=3') 3
+                        li.page-item
+                        a.page-link(href='/products?page=4') Next
+    
