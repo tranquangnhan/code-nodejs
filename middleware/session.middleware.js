@@ -1,14 +1,14 @@
 var shortid = require('shortid');
-var db = require('../db');
+var db = require("../db");
 module.exports = function(req, res, next) {
-    var sessionId = shortid.generate(); //tạo ra shortid
-    if (!req.signedCookies.sessionId) { //kiểm tra xem có cookie k 
-        res.cookie('session', sessionId, { //xét cookie bằng shortid
-            singed: true
+    var sessionId = shortid.generate();
+    if (!req.signedCookies.sessionId) {
+        res.cookie('sessionId', sessionId, {
+            signed: true
         });
+        db.get('session').push({
+            id: sessionId
+        }).write();
     }
-    db.get('session').push({
-        id: sessionId
-    })
     next();
 }

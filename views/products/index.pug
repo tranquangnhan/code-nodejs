@@ -18,7 +18,8 @@ block content
                         div.card-body
                             h5.card-title= pro.name
                             p.card-text= pro.description
-                            a.btn.btn-primary Chọn
+                            a(href="/cart/add/" + pro.id).btn.btn-primary Add to Card
+        //- chuyển trang
         .row
             .col-lg-9 Chuyển Trang
             .col-lg-3 

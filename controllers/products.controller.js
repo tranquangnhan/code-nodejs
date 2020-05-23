@@ -5,7 +5,7 @@ module.exports.products = function(req, res) {
     var start = (page - 1) * perPage; //phần tử bắt đầu
     var end = page * perPage; //phần tử kết thúc
     var drop = (page - 1) * perPage;
-    res.render('products/products', {
+    res.render('products/index', {
         // products: db.get('products').value().slice(start, end) //lấy phần tử
         products: db.get('products').drop(drop).take(perPage).value()
     });
