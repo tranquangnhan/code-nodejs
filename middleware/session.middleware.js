@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
         res.cookie('sessionId', sessionId, {
             signed: true
         });
-        db.get('session').push({
+        db.get('sessions').push({
             id: sessionId
         }).write();
     }
